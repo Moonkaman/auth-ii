@@ -16,7 +16,13 @@ router.post('/register', (req, res) => {
           const token = generateToken(user);
           res.status(201).json({message: `Successfully signed up, welcome ${user.username}`, token})
       })
-      .catch(err => res.status(500).json({errorMsg: 'Could not create a new user at this time', err}));
+      .catch(err => {
+        if(err.errno === 19) {
+          res.status(400).json({message: 'This username has already been taken'})
+        } else {
+          res.status(500).json({errorMsg: 'Could not create a new user at this time', err});
+        }
+    });
   }
 })
 
