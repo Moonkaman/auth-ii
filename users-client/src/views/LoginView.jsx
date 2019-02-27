@@ -22,6 +22,7 @@ const LoginView = props => {
       .post(`${props.baseURL}/api/login`, loginInfo)
       .then(res => {
         localStorage.setItem("jwt", res.data.token);
+        props.history.push("/");
       })
       .catch(err => console.log(err));
   };
