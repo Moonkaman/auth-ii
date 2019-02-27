@@ -2,6 +2,7 @@ const db = require('../dbConfig');
 
 module.exports = {
   get,
+  getBy,
   insert
 }
 
@@ -15,10 +16,13 @@ function get(id) {
   }
 }
 
+function getBy(filter) {
+  return db('users').where(filter).first();
+}
+
 function insert(user) {
   return db('users').insert(user)
     .then(id => {
       return db('users').where({id: id[0]}).first();
     })
-    .catch(err => console.log('big catch inside of usersDb'))
 }

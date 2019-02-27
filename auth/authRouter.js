@@ -16,7 +16,24 @@ router.post('/register', (req, res) => {
           const token = generateToken(user);
           res.status(201).json({message: `Successfully signed up, welcome ${user.username}`, token})
       })
-      .catch(err => res.status(500).json({errorMsg: 'Could not create a new user at this time', err}))
+      .catch(err => res.status(500).json({errorMsg: 'Could not create a new user at this time', err}));
+  }
+})
+
+router.post('/login', (req, res) => {
+  if(!req.body.username || !req.body.password) {
+    res.status(400).json({message: 'Please provide a username and password'})
+  } else {
+    db.getBy({username: req.body.username})
+      .then(user => {
+        if(user) {
+          const token = generateToken(user);
+          res.status(200).json({message: `Welcome ${user.username}`, token})
+        } else {
+          res.status(401).json({message: 'Invalid Credentials'})
+        }
+      })
+      .catch(err => res.status(500).json({errorMsg: 'Could not login at this time', err}));
   }
 })
 
