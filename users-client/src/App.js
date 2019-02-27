@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
 import "./App.css";
@@ -8,7 +8,7 @@ import RegisterView from "./views/RegisterView";
 
 const App = props => {
   const token = localStorage.getItem("jwt");
-  console.log("token: ", token);
+  const baseURL = "http://localhost:8000";
 
   return (
     <div className="App">
@@ -16,14 +16,22 @@ const App = props => {
         exact
         path="/"
         render={props =>
-          token ? <HomeView {...props} /> : <Redirect to="/login" />
+          token ? (
+            <HomeView {...props} baseURL={baseURL} />
+          ) : (
+            <Redirect to="/login" />
+          )
         }
       />
-      <Route exact path="/login" render={props => <LoginView {...props} />} />
+      <Route
+        exact
+        path="/login"
+        render={props => <LoginView {...props} baseURL={baseURL} />}
+      />
       <Route
         exact
         path="/register"
-        render={props => <RegisterView {...props} />}
+        render={props => <RegisterView {...props} baseURL={baseURL} />}
       />
     </div>
   );

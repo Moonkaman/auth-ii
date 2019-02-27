@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+
+import LoginForm from "../components/Login/LoginForm";
 
 const LoginView = props => {
+  const [loginInfo, setLoginInfo] = useState({
+    username: "",
+    password: ""
+  });
+
+  const handleChange = e => {
+    setLoginInfo({
+      ...loginInfo,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const login = e => {
+    e.preventDefault();
+    axios
+      .post(`${props.baseURL}/api/login`, loginInfo)
+      .then(res => {
+        localStorage.setItem("jwt", res.data.token);
+      })
+      .catch(err => console.log(err));
+  };
+
   return (
     <div>
-      <h1>Login View</h1>
+      <h1>Login</h1>
+      <LoginForm
+        loginInfo={loginInfo}
+        handleChange={handleChange}
+        login={login}
+      />
     </div>
   );
 };
