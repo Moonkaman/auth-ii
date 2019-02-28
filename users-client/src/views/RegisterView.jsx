@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { withSnackbar } from "notistack";
 
 import RegisterForm from "../components/Register/RegisterForm";
 
@@ -23,9 +24,18 @@ const RegisterView = props => {
       .post("/api/register", registerInfo)
       .then(res => {
         localStorage.setItem("jwt", res.data.token);
+        props.enqueueSnackbar("Successfully Registered Account!", {
+          variant: "success",
+          autoHideDuration: 2200
+        });
         props.history.push("/");
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        props.enqueueSnackbar(err.response.data.message, {
+          variant: "error",
+          autoHideDuration: 2200
+        });
+      });
   };
 
   return (
@@ -40,4 +50,4 @@ const RegisterView = props => {
   );
 };
 
-export default RegisterView;
+export default withSnackbar(RegisterView);
