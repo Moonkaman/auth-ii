@@ -10,6 +10,12 @@ const App = props => {
   const token = localStorage.getItem("jwt");
   const baseURL = "http://localhost:8000";
 
+  const setHeaders = {
+    headers: {
+      Authorization: token
+    }
+  };
+
   return (
     <div className="App">
       <Route
@@ -17,7 +23,7 @@ const App = props => {
         path="/"
         render={props =>
           token ? (
-            <HomeView {...props} baseURL={baseURL} />
+            <HomeView {...props} baseURL={baseURL} setHeaders={setHeaders} />
           ) : (
             <Redirect to="/login" />
           )
