@@ -23,6 +23,8 @@ router.post('/register', (req, res) => {
           res.status(500).json({errorMsg: 'Could not create a new user at this time', err});
         }
     });
+  } else {
+    res.status(400).json({message: 'Please Provide a Username and Password'})
   }
 })
 

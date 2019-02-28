@@ -33,7 +33,7 @@ const RegisterForm = props => {
         <button>Register</button>
         <br />
         <p>
-          Already have an account? <Link to="/register">Log In</Link>
+          Already have an account? <Link to="/login">Log In</Link>
         </p>
       </form>
     </div>
