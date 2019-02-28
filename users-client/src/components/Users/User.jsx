@@ -1,10 +1,12 @@
 import React from "react";
 
+import "./Users.css";
+
 const User = props => {
   return (
-    <div>
+    <div className="user">
       <h2>{props.user.username}</h2>
-      <h4>{props.user.department}</h4>
+      <h4>Department: {props.user.department}</h4>
     </div>
   );
 };

@@ -24,11 +24,13 @@ const HomeView = props => {
 
   return (
     <div>
-      <h1>Home View</h1>
+      <h1>Users</h1>
       {users.map(user => (
         <User user={user} key={user.id} />
       ))}
-      <button onClick={logout}>Log out</button>
+      <button className="logout-btn" onClick={logout}>
+        Log out
+      </button>
     </div>
   );
 };
