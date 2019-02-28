@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import User from "../components/Users/User";
+import requireAuth from "../auth/requireAuth";
 
 const HomeView = props => {
   const [users, setUsers] = useState([]);
 
   useEffect(_ => {
     axios
-      .get(`${props.baseURL}/api/users`, props.setHeaders)
+      .get("/api/users")
       .then(res => {
         setUsers([...res.data]);
       })
@@ -32,4 +33,4 @@ const HomeView = props => {
   );
 };
 
-export default HomeView;
+export default requireAuth(HomeView);

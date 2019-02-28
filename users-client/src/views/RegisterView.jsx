@@ -20,7 +20,7 @@ const RegisterView = props => {
   const register = e => {
     e.preventDefault();
     axios
-      .post(`${props.baseURL}/api/register`, registerInfo)
+      .post("/api/register", registerInfo)
       .then(res => {
         localStorage.setItem("jwt", res.data.token);
         props.history.push("/");

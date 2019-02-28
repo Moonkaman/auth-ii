@@ -19,7 +19,7 @@ const LoginView = props => {
   const login = e => {
     e.preventDefault();
     axios
-      .post(`${props.baseURL}/api/login`, loginInfo)
+      .post("/api/login", loginInfo)
       .then(res => {
         localStorage.setItem("jwt", res.data.token);
         props.history.push("/");
