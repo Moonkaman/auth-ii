@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const RegisterForm = props => {
   return (
     <div>
-      <form className="login-form" onSubmit={props.register}>
+      <form className="auth-form" onSubmit={props.register}>
         <p>Username</p>
         <input
           type="Text"
@@ -32,7 +32,7 @@ const RegisterForm = props => {
         <br />
         <button>Register</button>
         <br />
-        <p>
+        <p className="link-text">
           Already have an account? <Link to="/login">Log In</Link>
         </p>
       </form>

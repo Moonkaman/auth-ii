@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import "./Login.css";
+
 const LoginForm = props => {
   return (
-    <form className="login-form" onSubmit={props.login}>
+    <form className="auth-form" onSubmit={props.login}>
       <p>Username</p>
       <input
         type="Text"
@@ -23,7 +25,7 @@ const LoginForm = props => {
       <br />
       <button>Log in</button>
       <br />
-      <p>
+      <p className="link-text">
         Don't have an account? <Link to="/register">Register</Link>
       </p>
     </form>
