@@ -1,0 +1,37 @@
+.user {
+  max-width: 400px;
+  margin: 0 auto;
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.user h2 {
+  margin: 0px;
+}
+
+.user h4 {
+  margin: 0px;
+}
+
+.logout-btn {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 8px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  background: #0984e3;
+  color: white;
+  transition: background 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #0b90f5;
+}
